@@ -33,6 +33,7 @@ class profilepage extends StatefulWidget {
 
 // ignore: camel_case_types
 class _profilepageState extends State<profilepage> {
+  int likes = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,21 +207,25 @@ class _profilepageState extends State<profilepage> {
                 ),
               ),
               const Divider(),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Your profile is ❤️'ed by $likes coders",
+                style: TextStyle(fontSize: 15, color: Colors.black),
+              )
             ],
           ),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              likes++;
+            });
+          },
+          child: const Icon(Icons.thumb_up_off_alt_rounded)),
     );
   }
 }
-
-// SizedBox(
-//                 width: 100,
-//                 height: 100,
-//                 child: ClipRRect(
-//                     borderRadius: BorderRadius.circular(100),
-//                     child: const Image(
-//                         image: AssetImage('assets/images/profilepic.jpg')
-//                       )
-//                   ),
-//               )
